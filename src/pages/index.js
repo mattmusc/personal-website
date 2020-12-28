@@ -41,13 +41,22 @@ export const Logo = styled.div`
   }
 `;
 
+const Footer = styled.div`
+  text-align: center;
+  font-size: .8rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 3.5vh;
+`;
+
 const Main = styled.main`
   padding: 0 4vw;
 
   display: flex;
   flex-direction: column;
 
-  margin-top: 5vh;
+  margin: 5vh 0;
 `;
 
 const MainWrapper = styled.div`
@@ -80,28 +89,27 @@ const StackTitle = styled.h3`
 
 const TechStack = styled.p`
   line-height: 1.5;
+  padding-left: 0.5vw;
 `;
 
 const ContactButton = styled.div`
+  color: white;
+  background-color: black;
+
   margin-top: 5vh;
-  width: 10rem;
+  width: 7rem;
+  padding: 1.5vh .5vw;
+  text-align: center;
 
-  color: black;
-  background-color: white;
-  padding: 10px;
-
-  border: 1px solid white;
-
-  &:hover {
-    border-bottom-color: black;
-  }
+  cursor: pointer;
 `;
 
 const IndexPage = () => {
   return (
     <Wrapper>
+
       <Helmet>
-        <title>~ matteo muscella</title>
+        <title>~ matteo muscella ~</title>
       </Helmet>
 
       <Header>
@@ -125,9 +133,15 @@ const IndexPage = () => {
             Java, JavaScript, TypeScript, Spring Boot, React, Redux
           </TechStack>
 
-          <ContactButton>Hire me!</ContactButton>
+          <ContactButton>
+            Contact me!
+          </ContactButton>
         </MainWrapper>
       </Main>
+
+      <Footer>
+        &copy; {new Date().getFullYear()} Matteo Muscella
+      </Footer>
 
     </Wrapper>
   )
