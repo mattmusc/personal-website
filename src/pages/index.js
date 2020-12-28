@@ -67,7 +67,7 @@ const MainWrapper = styled.div`
   p:nth-child(n + 2) {
     margin-top: 0;
   }
-  
+
   padding-left: 8vw;
 `;
 
@@ -122,6 +122,7 @@ const IndexPage = () => {
       <Main>
 
         <MainWrapper>
+
           <Hello>Hi!</Hello>
           <P>My name is Matteo Muscella</P>
           <P>I develop software</P>
@@ -136,7 +137,9 @@ const IndexPage = () => {
           <ContactButton>
             Contact me!
           </ContactButton>
+
         </MainWrapper>
+
       </Main>
 
       <Footer>
