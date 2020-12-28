@@ -13,5 +13,16 @@ module.exports = {
       },
       __key: "images",
     },
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          common: 'src/common',
+          images: 'src/images',
+          pages: 'src/pages',
+        },
+        extensions: []
+      }
+    },
   ],
 };
