@@ -24,6 +24,7 @@ export const Logo = styled.div`
   display: flex;
   justify-content: space-between;
   width: 8vw;
+  min-width: 60px;
 
   & > h1 {
     margin: 0;
@@ -34,10 +35,6 @@ export const Logo = styled.div`
     border-left: 2px solid black;
     height: 70%;
     transform: translateY(25%);
-
-    @media all and (max-width: 600px) {
-      display: none;
-    }
   }
 `;
 
@@ -89,19 +86,48 @@ const StackTitle = styled.h3`
 
 const TechStack = styled.p`
   line-height: 1.5;
-  padding-left: 0.5vw;
 `;
 
 const ContactButton = styled.div`
-  color: white;
-  background-color: black;
+  & {
+    position: relative;
+    margin-top: 5vh;
+    width: 7rem;
+    height: 1.2rem;
+    padding: 1em 2em;
+    text-align: center;
+    cursor: pointer;
 
-  margin-top: 5vh;
-  width: 7rem;
-  padding: 1.5vh .5vw;
-  text-align: center;
+    color: black;
+    border-color: black;
+    border: 1px solid;
 
-  cursor: pointer;
+    transition: border-color 0.4s, color 0.4s;
+  }
+
+  &:hover {
+    color: white;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: -1;
+    opacity: 0;
+    transform: scale3d(0.7, 1, 1);
+    transition: transform 0.4s, opacity 0.4s;
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+  }
+
+  &:hover :before {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 `;
 
 const IndexPage = () => {
