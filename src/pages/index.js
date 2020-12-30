@@ -1,3 +1,4 @@
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import * as React from 'react';
 import {Helmet} from 'react-helmet';
 import styled from 'styled-components';
@@ -88,46 +89,63 @@ const TechStack = styled.p`
   line-height: 1.5;
 `;
 
-const ContactButton = styled.div`
-  & {
-    position: relative;
-    margin-top: 5vh;
-    width: 7rem;
-    height: 1.2rem;
-    padding: 1em 2em;
-    text-align: center;
-    cursor: pointer;
+// const ContactButton = styled.div`
+//   & {
+//     position: relative;
+//     margin-top: 5vh;
+//     width: 7rem;
+//     height: 1.2rem;
+//     padding: 1em 2em;
+//     text-align: center;
+//     cursor: pointer;
+//
+//     color: black;
+//     border-color: black;
+//     border: 1px solid;
+//
+//     transition: border-color 0.4s, color 0.4s;
+//   }
+//
+//   &:hover {
+//     color: white;
+//   }
+//
+//   &:before {
+//     content: '';
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background: black;
+//     z-index: -1;
+//     opacity: 0;
+//     transform: scale3d(0.7, 1, 1);
+//     transition: transform 0.4s, opacity 0.4s;
+//     transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+//   }
+//
+//   &:hover :before {
+//     opacity: 1;
+//     transform: translate3d(0, 0, 0);
+//   }
+// `;
 
-    color: black;
-    border-color: black;
-    border: 1px solid;
+const SocialLinks = styled.div`
+  display: flex;
+  margin-top: 2vh;
+`;
 
-    transition: border-color 0.4s, color 0.4s;
+const SocialLinkItemContainer = styled.div`
+  &:not(:first-child) {
+    margin-left: 1em;
   }
+`;
 
-  &:hover {
-    color: white;
-  }
+const SocialLink = styled.a``;
 
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    z-index: -1;
-    opacity: 0;
-    transform: scale3d(0.7, 1, 1);
-    transition: transform 0.4s, opacity 0.4s;
-    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-  }
-
-  &:hover :before {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
+const SocialLinkItem = styled.i`
+  font-size: 3em;
 `;
 
 const IndexPage = () => {
@@ -160,9 +178,24 @@ const IndexPage = () => {
             Java, JavaScript, TypeScript, Spring Boot, React, Redux
           </TechStack>
 
-          <ContactButton>
-            Contact me!
-          </ContactButton>
+          <SocialLinks>
+            {
+              [
+                {
+                  icon: 'github',
+                  link: '',
+                }
+              ].map(({icon, link}) => (
+                <SocialLinkItemContainer>
+                  <SocialLink href={link}>
+                    <SocialLinkItem
+                      className={`fab fa-${icon}`}
+                    />
+                  </SocialLink>
+                </SocialLinkItemContainer>
+              ))
+            }
+          </SocialLinks>
 
         </MainWrapper>
 
