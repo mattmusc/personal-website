@@ -1,9 +1,12 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import * as React from 'react';
 import {Helmet} from 'react-helmet';
-import styled from 'styled-components';
+import styled, {ThemeProvider} from 'styled-components';
 import 'typeface-domine';
 
+import {themes} from '../theme';
+
+import {links} from './data';
 import './main.css';
 
 export const Wrapper = styled.div`
@@ -12,6 +15,9 @@ export const Wrapper = styled.div`
   flex-direction: column;
 
   height: 100vh;
+
+  background-color: ${props => props.theme.bg};
+  color: ${props => props.theme.text};
 `;
 
 export const Header = styled.header`
@@ -33,7 +39,7 @@ export const Logo = styled.div`
   }
 
   & > div {
-    border-left: 2px solid black;
+    border-left: 2px solid ${props => props.theme.text};
     height: 70%;
     transform: translateY(25%);
   }
@@ -83,53 +89,13 @@ const P = styled.h1`
 
 const StackTitle = styled.h3`
   margin-top: 7vh;
+  color: ${props => props.theme.accent};
+  font-weight: bold;
 `;
 
 const TechStack = styled.p`
   line-height: 1.5;
 `;
-
-// const ContactButton = styled.div`
-//   & {
-//     position: relative;
-//     margin-top: 5vh;
-//     width: 7rem;
-//     height: 1.2rem;
-//     padding: 1em 2em;
-//     text-align: center;
-//     cursor: pointer;
-//
-//     color: black;
-//     border-color: black;
-//     border: 1px solid;
-//
-//     transition: border-color 0.4s, color 0.4s;
-//   }
-//
-//   &:hover {
-//     color: white;
-//   }
-//
-//   &:before {
-//     content: '';
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     background: black;
-//     z-index: -1;
-//     opacity: 0;
-//     transform: scale3d(0.7, 1, 1);
-//     transition: transform 0.4s, opacity 0.4s;
-//     transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-//   }
-//
-//   &:hover :before {
-//     opacity: 1;
-//     transform: translate3d(0, 0, 0);
-//   }
-// `;
 
 const SocialLinks = styled.div`
   display: flex;
@@ -138,74 +104,81 @@ const SocialLinks = styled.div`
 
 const SocialLinkItemContainer = styled.div`
   &:not(:first-child) {
-    margin-left: 1em;
+    margin-left: 2em;
+  }
+
+  transition: .3s;
+
+  &:hover, &:hover > a {
+    transform: scale(1.4, 1.4);
   }
 `;
 
-const SocialLink = styled.a``;
+const SocialLink = styled.a`
+  color: ${props => props.theme.text};
+`;
 
 const SocialLinkItem = styled.i`
-  font-size: 3em;
+  font-size: 2.8em;
 `;
 
 const IndexPage = () => {
+  const [theme, setTheme] = React.useState(themes.solarizedLight);
+
   return (
-    <Wrapper>
+    <ThemeProvider theme={theme}>
+      <Wrapper>
 
-      <Helmet>
-        <title>~ matteo muscella ~</title>
-      </Helmet>
+        <Helmet>
+          <title>~ matteo muscella ~</title>
+        </Helmet>
 
-      <Header>
-        <Logo>
-          <h1>m</h1>
-          <div/>
-        </Logo>
-      </Header>
+        <Header>
+          <Logo>
+            <h1>m</h1>
+            <div/>
+          </Logo>
+        </Header>
 
-      <Main>
+        <Main>
 
-        <MainWrapper>
+          <MainWrapper>
 
-          <Hello>Hi!</Hello>
-          <P>My name is Matteo Muscella</P>
-          <P>I develop software</P>
+            <Hello>Hi!</Hello>
+            <P>My name is Matteo Muscella</P>
+            <P>I develop software</P>
 
-          <StackTitle>
-            My stack
-          </StackTitle>
-          <TechStack>
-            Java, JavaScript, TypeScript, Spring Boot, React, Redux
-          </TechStack>
+            <StackTitle>
+              My stack
+            </StackTitle>
+            <TechStack>
+              Java, JavaScript, TypeScript - Spring Boot, React & Redux.
+            </TechStack>
 
-          <SocialLinks>
-            {
-              [
-                {
-                  icon: 'github',
-                  link: '',
-                }
-              ].map(({icon, link}) => (
-                <SocialLinkItemContainer>
-                  <SocialLink href={link}>
-                    <SocialLinkItem
-                      className={`fab fa-${icon}`}
-                    />
-                  </SocialLink>
-                </SocialLinkItemContainer>
-              ))
-            }
-          </SocialLinks>
+            <SocialLinks>
+              {
+                links.map(({icon, link}) => (
+                  <SocialLinkItemContainer key={icon}>
+                    <SocialLink href={link}>
+                      <SocialLinkItem
+                        className={`fab fa-${icon}`}
+                      />
+                    </SocialLink>
+                  </SocialLinkItemContainer>
+                ))
+              }
+            </SocialLinks>
 
-        </MainWrapper>
+          </MainWrapper>
 
-      </Main>
+        </Main>
 
-      <Footer>
-        &copy; {new Date().getFullYear()} Matteo Muscella
-      </Footer>
+        <Footer>
+          &copy; {new Date().getFullYear()} Matteo Muscella
+        </Footer>
 
-    </Wrapper>
+      </Wrapper>
+    </ThemeProvider>
   )
 }
 
