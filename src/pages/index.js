@@ -1,9 +1,10 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import * as React from 'react';
 import {Helmet} from 'react-helmet';
-import styled, {ThemeProvider} from 'styled-components';
+import {ThemeProvider} from 'styled-components';
 import 'typeface-domine';
 
+import {useLocalStorage} from '../hooks/useLocalStorage';
 import {themes} from '../theme';
 
 import {links} from './data';
@@ -22,14 +23,18 @@ import {
   SocialLinks,
   StackTitle,
   TechStack,
+  ToggleDark,
+  ToggleLight,
+  TogglesContainer,
   Wrapper,
 } from './styles';
 
 const IndexPage = () => {
-  const [theme, setTheme] = React.useState(themes.solarizedLight);
+  // persist the theme on local storage with an hook
+  const [theme, setTheme] = useLocalStorage('mattmusc:theme', 'light');
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themes[theme]}>
       <Wrapper>
 
         <Helmet>
@@ -41,6 +46,18 @@ const IndexPage = () => {
             <h1>m</h1>
             <div/>
           </Logo>
+          <TogglesContainer>
+            <ToggleLight
+              className="far fa-sun"
+              isActive={theme === 'light'}
+              onClick={() => setTheme('dark')}
+            />
+            <ToggleDark
+              className="fas fa-moon"
+              isActive={theme === 'dark'}
+              onClick={() => setTheme('light')}
+            />
+          </TogglesContainer>
         </Header>
 
         <Main>
@@ -77,7 +94,7 @@ const IndexPage = () => {
         </Main>
 
         <Footer>
-          &copy; {new Date().getFullYear()} Matteo Muscella
+          &copy; {new Date().getFullYear()} mattmusc
         </Footer>
 
       </Wrapper>

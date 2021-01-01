@@ -9,6 +9,9 @@ export const Wrapper = styled.div`
 
   background-color: ${props => props.theme.bg};
   color: ${props => props.theme.text};
+
+  // animate the change of colors, just to have a smoother change
+  transition: all .3s;
 `;
 
 export const Header = styled.header`
@@ -38,7 +41,7 @@ export const Logo = styled.div`
 
 export const Footer = styled.div`
   text-align: center;
-  font-size: .8rem;
+  font-size: .9rem;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -90,7 +93,7 @@ export const TechStack = styled.p`
 
 export const SocialLinks = styled.div`
   display: flex;
-  margin-top: 2vh;
+  margin-top: 4vh;
 `;
 
 export const SocialLinkItemContainer = styled.div`
@@ -112,3 +115,25 @@ export const SocialLink = styled.a`
 export const SocialLinkItem = styled.i`
   font-size: 2.8em;
 `;
+
+export const TogglesContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const Toggle = styled.i`
+  cursor: pointer;
+  font-size: 2em;
+  display: ${props => props.isActive ? 'block' : 'none'}
+`;
+
+export const ToggleLight = styled(Toggle)`
+  //transition: .3s;
+  //transform: rotate(0deg);
+  //
+  //&:hover {
+  //  transform: rotate(45deg);
+  //}
+`
+
+export const ToggleDark = styled(Toggle)``;
