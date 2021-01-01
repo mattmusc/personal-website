@@ -1,16 +1,34 @@
 import * as React from 'react';
+import {Helmet} from 'react-helmet';
+import {ThemeProvider} from 'styled-components';
 
-const pageStyles = {
-  padding: '96px',
-  fontFamily: 'Roboto, -apple-system, sans-serif, serif',
-}
+import {useLocalStorage} from '../hooks/useLocalStorage';
+import {themes} from '../theme';
 
-const ErrorPage = () => (
-  <main style={pageStyles}>
-    <title>There's nothing here</title>
-    <h1>404</h1>
-    <p>Go back <a href="/">home</a></p>
-  </main>
-);
+import {Main, MainWrapper, Wrapper} from './styles';
+
+const ErrorPage = () => {
+  // persist the theme on local storage with an hook
+  const [theme] = useLocalStorage('mattmusc:theme', 'light');
+  return (
+    <ThemeProvider theme={themes[theme]}>
+      <Wrapper>
+
+        <Helmet>
+          <title>~ 404: not found ~</title>
+        </Helmet>
+
+        <Main>
+          <MainWrapper>
+            <h1>404: Oh snap!</h1>
+            <p>There's nothing here</p>
+            <a href="/" style={{ color: themes[theme].text }}>Go back</a>
+          </MainWrapper>
+        </Main>
+
+      </Wrapper>
+    </ThemeProvider>
+  );
+};
 
 export default ErrorPage;
