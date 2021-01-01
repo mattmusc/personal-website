@@ -5,11 +5,8 @@ import {ThemeProvider} from 'styled-components';
 import 'typeface-domine';
 
 import {useLocalStorage} from '../hooks/useLocalStorage';
-import {themes} from '../theme';
-
-import {links} from './data';
-import './main.css';
 import {
+  themes,
   Footer,
   Header,
   Hello,
@@ -27,7 +24,20 @@ import {
   ToggleLight,
   TogglesContainer,
   Wrapper,
-} from './styles';
+} from '../styles/index';
+
+import './main.css';
+
+export const links = [
+  {
+    icon: 'github',
+    link: 'https://www.github.com/mattmusc',
+  },
+  {
+    icon: 'linkedin',
+    link: 'https://www.linkedin.com/in/matteomuscella/?locale=en_US',
+  }
+];
 
 const IndexPage = () => {
   // persist the theme on local storage with an hook
