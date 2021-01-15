@@ -25,6 +25,7 @@ export const Wrapper = styled.div`
   font-family: Domine, "Helvetica Neue", sans-serif;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
   height: 100vh;
 
@@ -63,8 +64,6 @@ export const Logo = styled.div`
 export const Footer = styled.div`
   text-align: center;
   font-size: .9rem;
-  position: absolute;
-  bottom: 0;
   width: 100%;
   margin-bottom: 3.5vh;
 `;
@@ -75,7 +74,7 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
 
-  margin: 5vh 0;
+  margin: 3vh 0;
 `;
 
 export const MainWrapper = styled.div`
@@ -87,7 +86,7 @@ export const MainWrapper = styled.div`
     margin-top: 0;
   }
 
-  padding-left: 8vw;
+  padding: 0 6vw 0 8vw;
 `;
 
 export const Hello = styled.h1`
@@ -110,6 +109,7 @@ export const StackTitle = styled.h3`
 
 export const TechStack = styled.p`
   line-height: 1.5;
+  font-size: .95rem;
 `;
 
 export const SocialLinks = styled.div`
