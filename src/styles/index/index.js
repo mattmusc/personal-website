@@ -93,6 +93,7 @@ export const Hello = styled.h1`
   font-size: 3rem;
   margin-top: 0;
   margin-bottom: 1.5vh;
+  color: ${props => props.theme.accent};
 `;
 
 export const P = styled.h1`

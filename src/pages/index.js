@@ -27,17 +27,7 @@ import {
 } from '../styles/index';
 
 import './main.css';
-
-export const links = [
-  {
-    icon: 'github',
-    link: 'https://www.github.com/mattmusc',
-  },
-  {
-    icon: 'linkedin',
-    link: 'https://www.linkedin.com/in/matteomuscella/?locale=en_US',
-  }
-];
+import {links} from './data';
 
 const IndexPage = () => {
   // persist the theme on local storage with an hook
