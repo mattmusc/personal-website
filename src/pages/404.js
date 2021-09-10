@@ -3,7 +3,7 @@ import {Helmet} from 'react-helmet';
 import {ThemeProvider} from 'styled-components';
 
 import {useLocalStorage} from '../hooks/useLocalStorage';
-import themes from '../styles/index/styles';
+import {themes} from '../styles/index';
 
 const ErrorPage = () => {
   // persist the theme on local storage with an hook

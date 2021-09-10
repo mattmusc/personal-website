@@ -1,4 +1,4 @@
-const themes = {
+export const themes = {
   bn: {
     bg: '#fff',
     text: '#000',
@@ -28,5 +28,3 @@ const themes = {
     green: '#859900',
   },
 };
-
-export default themes;
