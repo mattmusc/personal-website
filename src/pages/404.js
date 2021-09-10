@@ -3,30 +3,31 @@ import {Helmet} from 'react-helmet';
 import {ThemeProvider} from 'styled-components';
 
 import {useLocalStorage} from '../hooks/useLocalStorage';
-import {themes, Main, MainWrapper, Wrapper} from '../styles/index';
+import themes from '../styles/index/styles';
 
 const ErrorPage = () => {
   // persist the theme on local storage with an hook
   const [theme] = useLocalStorage('mattmusc:theme', 'light');
+
   return (
     <ThemeProvider theme={themes[theme]}>
-      <Wrapper>
+      <Helmet htmlAttributes={{lang: 'en'}}>
+        <title>~oops~</title>
+        <style type="text/css">{`
+          body {
+            background-color: ${themes[theme].bg};
+          }
+        `}</style>
+      </Helmet>
 
-        <Helmet>
-          <title>~ 404: not found ~</title>
-        </Helmet>
-
-        <Main>
-          <MainWrapper>
-            <h1>404: Oh snap!</h1>
-            <p>There's nothing here</p>
-            <a href="/" style={{ color: themes[theme].text }}>Go back</a>
-          </MainWrapper>
-        </Main>
-
-      </Wrapper>
+      <div style={{padding: '2rem 4rem'}}>
+        <h1 style={{color: `${themes[theme].grey}`}}>
+          Looks like there's nothing here...
+        </h1>
+        <a href="/" style={{ color: themes[theme].blue }}>Go back</a>
+      </div>
     </ThemeProvider>
   );
-};
+}
 
 export default ErrorPage;

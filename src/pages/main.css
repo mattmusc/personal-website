@@ -1,4 +1,88 @@
 body {
     margin: 0;
     padding: 0;
+    font-family: 'Domine', sans-serif;
+    height: 100vh;
+    transition: all .3s;
+}
+
+#___gatsby {
+    height: 100%;
+}
+
+#gatsby-focus-wrapper {
+    height: 100%;
+}
+
+h1, h2, h3, h4, p {
+    line-height: 1.8rem;
+}
+
+.animation-loading {
+    opacity: 0;
+    position: fixed;
+    top: 20vh;
+    right: 8vh;
+
+    animation-duration: 2s;
+    animation-name: pulse;
+    animation-iteration-count: 2;
+}
+
+@keyframes pulse {
+    from {
+        opacity: 1%;
+    }
+
+    50% {
+        opacity: 55%;
+    }
+
+    to {
+        opacity: 1%;
+    }
+}
+
+aside.code-playground {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 12vh;
+    right: 8vh;
+    height: 25vh;
+
+    animation: appear .3s ease-in;
+    animation-delay: 4s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+aside.code-playground button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    text-transform: lowercase;
+}
+
+aside.code-playground #output {
+    margin-top: 30px;
+}
+
+@keyframes appear {
+    from {
+        visibility: visible;
+        opacity: 0;
+    }
+    to {
+        visibility: visible;
+        opacity: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .animation-loading {
+        display: none;
+    }
+    aside.code-playground {
+        display: none;
+    }
 }
