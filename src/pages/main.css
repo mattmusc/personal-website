@@ -86,3 +86,7 @@ aside.code-playground #output {
         display: none;
     }
 }
+
+.my-desc {
+    max-width: 700px;
+}

@@ -1,8 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import {useLocalStorage} from '../../hooks/useLocalStorage';
-import {themes} from '../../styles';
 
 const links = [
   {
@@ -32,8 +30,6 @@ const SocialLink = styled.a`
 `;
 
 export const SocialLinks = () => {
-  const [theme] = useLocalStorage('mattmusc:theme', 'light');
-
   return (
     <div>
       {links.map(({icon, link}) => (

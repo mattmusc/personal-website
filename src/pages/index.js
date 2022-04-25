@@ -86,9 +86,10 @@ const IndexPage = () => {
           <h1 style={{color: `${themes[theme].grey}`, fontSize: '3rem'}}>Hi! 👋</h1>
           <h1 style={{color: `${themes[theme].grey}`}}>I am Matteo Muscella</h1>
           <p style={{color: `${themes[theme].orange}`}}>A software developer</p>
-          <p style={{color: `${themes[theme].grey}`}}>
+          <p className="my-desc" style={{color: `${themes[theme].grey}`}}>
             I have {ys} years of experience building complete web apps.
-            Recently, I have just started learning mobile development with Flutter.
+            <br/>
+            Recently, I have started learning mobile development with Flutter.
           </p>
         </section>
 
@@ -100,7 +101,7 @@ const IndexPage = () => {
           <h3 style={{color: `${themes[theme].green}`, fontStyle: 'italic'}}>#my stack</h3>
           <h2 style={{color: `${themes[theme].grey}`}}>Some of the languages and tools I have used:</h2>
           <p style={{color: `${themes[theme].grey}`}}>Java, JavaScript, TypeScript and Python</p>
-          <p style={{color: `${themes[theme].grey}`}}>React with Redux & Angular</p>
+          <p style={{color: `${themes[theme].grey}`}}>React & Angular</p>
           <p style={{color: `${themes[theme].grey}`}}>HTML, CSS3</p>
           <p style={{color: `${themes[theme].grey}`}}>Flutter</p>
         </section>
