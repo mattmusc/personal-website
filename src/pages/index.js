@@ -37,8 +37,8 @@ const Logo = styled.div`
 `;
 
 const Main = styled.main`
-  height: 81vh;
-  overflow: scroll;
+  height: 82vh;
+  overflow: hidden;
   padding: 0 4vw;
 
   @media ${device.mobileS} {
@@ -48,7 +48,7 @@ const Main = styled.main`
 
 const Footer = styled.footer`
   height: 2vh;
-  padding: 3vh 4vw 2vh;
+  padding: 2vh 4vw 2vh;
   display: flex;
   justify-content: center;
   color: ${props => props.theme.lightGrey};
