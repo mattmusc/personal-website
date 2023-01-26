@@ -37,8 +37,8 @@ const Logo = styled.div`
 `;
 
 const Main = styled.main`
-  height: 82vh;
-  overflow: hidden;
+  //height: 82vh;
+  //overflow: hidden;
   padding: 0 4vw;
 
   @media ${device.mobileS} {
