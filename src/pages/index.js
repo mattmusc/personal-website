@@ -1,4 +1,5 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import formatDistance from 'date-fns/formatDistance';
 import * as React from 'react';
 import {Helmet} from 'react-helmet';
 import styled, {ThemeProvider} from 'styled-components';
@@ -26,7 +27,7 @@ const Nav = styled.nav`
   align-items: center;
   justify-content: space-between;
 
-  @media ${device.mobileS} {
+  @media all and ${device.mobileS} {
     height: 8vh;
   }
 `;
@@ -41,7 +42,7 @@ const Main = styled.main`
   //overflow: hidden;
   padding: 0 4vw;
 
-  @media ${device.mobileS} {
+  @media all and ${device.mobileS} {
     height: 74vh;
   }
 `;
@@ -58,7 +59,7 @@ const Footer = styled.footer`
 const IndexPage = () => {
   const [theme, setTheme] = useLocalStorage('mattmusc:theme', 'light');
 
-  const ys = (new Date().getFullYear()) - 2016;
+  const ys = formatDistance(new Date(2016, 11, 16), new Date());
 
   return (
     <ThemeProvider theme={themes[theme]}>
@@ -84,12 +85,11 @@ const IndexPage = () => {
         <section>
           <h3 style={{color: `${themes[theme].orange}`, fontStyle: 'italic'}}>#about me</h3>
           <h1 style={{color: `${themes[theme].grey}`, fontSize: '3rem'}}>Hi! 👋</h1>
-          <h1 style={{color: `${themes[theme].grey}`}}>I am Matteo Muscella</h1>
-          <p style={{color: `${themes[theme].orange}`}}>A software developer</p>
+          <h1 style={{color: `${themes[theme].grey}`}}>I'm Matteo Muscella</h1>
+          <p style={{color: `${themes[theme].orange}`}}>I'm a software developer and tech enthusiast.</p>
           <p className="my-desc" style={{color: `${themes[theme].grey}`}}>
-            I have {ys} years of experience building complete web apps.
-            <br/>
-            Recently, I have started learning mobile development with Flutter.
+            I have {ys} of experience building complete web apps,
+            and have built a couple of  mobile apps with Flutter.
           </p>
         </section>
 
