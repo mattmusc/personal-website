@@ -9,7 +9,7 @@ import {CodePlayground, SocialLinks, ThemeToggle} from '../components/index';
 import {useLocalStorage} from '../hooks/useLocalStorage';
 import {themes} from '../styles/index';
 
-import './main.css';
+import '../styles/main.css';
 
 const size = {
   mobileS: '320px',
