@@ -7,7 +7,7 @@ export function useLocalStorage(key, initialValue) {
   // Pass initial state function to useState so logic is only executed once
   const [storedValue, setStoredValue] = React.useState(() => {
     if (typeof window === `undefined`) {
-      return;
+      return initialValue;
     }
 
     try {
