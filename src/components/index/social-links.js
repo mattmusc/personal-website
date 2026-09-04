@@ -5,10 +5,12 @@ import styled from 'styled-components';
 const links = [
   {
     icon: 'github',
+    label: 'GitHub',
     link: 'https://www.github.com/mattmusc',
   },
   {
     icon: 'linkedin',
+    label: 'LinkedIn',
     link: 'https://www.linkedin.com/in/matteomuscella/?locale=en_US',
   }
 ];
@@ -31,13 +33,19 @@ const SocialLink = styled.a`
 
 export const SocialLinks = () => {
   return (
-    <div>
-      {links.map(({icon, link}) => (
-        <SocialLink title={link} href={link}>
-          <i className={`fab fa-${icon}`}/>
+    <div className="social-links">
+      {links.map(({icon, label, link}) => (
+        <SocialLink
+          aria-label={label}
+          href={link}
+          key={label}
+          rel="noreferrer"
+          target="_blank"
+          title={label}
+        >
+          <i aria-hidden="true" className={`fab fa-${icon}`}/>
         </SocialLink>
       ))}
     </div>
   );
 };
-

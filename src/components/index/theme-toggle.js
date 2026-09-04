@@ -1,20 +1,17 @@
 import * as React from 'react';
 
-import {themes} from '../../styles/index';
+export const ThemeToggle = ({theme, setTheme}) => {
+  const nextTheme = theme === 'light' ? 'dark' : 'light';
 
-export const ThemeToggle = ({theme, setTheme}) => (
-  <span
-    style={{
-      color: `${themes[theme].grey}`,
-      marginRight: '5px',
-      cursor: 'pointer',
-    }}
-    role="button"
-    tabIndex="0"
-    title="Change the theme"
-    onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-    onKeyUp={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-  >
-    <i className={`fas fa-2x fa-${theme === 'light' ? 'moon' : 'sun'}`}/>
-  </span>
-);
+  return (
+    <button
+      aria-label={`Switch to ${nextTheme} theme`}
+      className="theme-toggle"
+      onClick={() => setTheme(nextTheme)}
+      title={`Switch to ${nextTheme} theme`}
+      type="button"
+    >
+      <i aria-hidden="true" className={`fas fa-${theme === 'light' ? 'moon' : 'sun'}`}/>
+    </button>
+  );
+};

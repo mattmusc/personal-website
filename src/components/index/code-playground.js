@@ -1,59 +1,35 @@
 import * as React from 'react';
-import styled from 'styled-components';
 
-import {useLocalStorage} from '../../hooks/useLocalStorage';
-import {themes} from '../../styles/index';
-
-const RunButton = styled.button`
-  background-color: ${props => props.theme.bg};
-  border: 1px solid ${props => props.theme.green};
-  color: ${props => props.theme.green};
-  transition: all .3s;
-
-  &:hover {
-    background-color: ${props => props.theme.green};
-    border-color: ${props => props.theme.green};
-    color: ${props => props.theme.bg};
-    cursor: pointer;
-  }
-`;
+const commands = {
+  about: 'Backend engineer · curious problem solver · tech enthusiast',
+  focus: 'Reliable services · software design · product engineering',
+  values: 'Clarity · craft · collaboration · continuous learning',
+};
 
 export const CodePlayground = () => {
-  const [theme] = useLocalStorage('mattmusc:theme', 'light');
-
-  const runExample = () => {
-    document.getElementById('output').textContent = 'Hello World!';
-  };
-
-  React.useEffect(() => {
-    function handleResize() {
-      if (window.innerWidth < 768) {
-        document.getElementById('output').textContent = '';
-      }
-    }
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      document.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  const [command, setCommand] = React.useState('about');
 
   return (
-    <aside className="code-playground" style={{color: `${themes[theme].lightGrey}`}}>
-          <pre>
-            <code>{`
-              document.getElementById('output').textContent = 'Hello World!';
-            `}
-            </code>
-          </pre>
-
-      <div style={{textAlign: 'right'}}>
-        <RunButton role="button" onKeyUp={runExample} onClick={runExample}>
-          Run it!
-        </RunButton>
-
-        <div id="output" style={{color: `${themes[theme].lightGrey}`}}/>
+    <aside className="terminal" aria-label="Interactive developer profile">
+      <div className="terminal-bar" aria-hidden="true">
+        <span/><span/><span/>
+        <span className="terminal-title">matteo.js</span>
+      </div>
+      <div className="terminal-body">
+        <p><span className="prompt">$</span> matteo.{command}()</p>
+        <p className="terminal-output">{commands[command]}</p>
+        <div className="terminal-commands" aria-label="Choose a command">
+          {Object.keys(commands).map(item => (
+            <button
+              className={item === command ? 'active' : ''}
+              key={item}
+              onClick={() => setCommand(item)}
+              type="button"
+            >
+              {item}()
+            </button>
+          ))}
+        </div>
       </div>
     </aside>
   );
